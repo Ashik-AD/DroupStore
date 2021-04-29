@@ -1,0 +1,35 @@
+.thumbWrapper {
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+.thumb {
+    border-radius: 8px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.thumb:hover {
+    opacity: 0.8;
+    transition: all .2s ease;
+}
+#active_thumb {
+    border: 2px solid hotpink;
+}
+.preview {
+    width: 90%;
+    height: 100%;
+    border-radius: 10px;
+}
+@media (max-width: 768px){
+    .preview {
+        display: none;
+    }
+    .thumbWrapper {
+        width: 100%!important;
+        height: auto;
+    }
+    .thumbWrapper img {
+        margin: 0 20px 10px 0;
+    }
+}

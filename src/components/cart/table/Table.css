@@ -1,0 +1,67 @@
+.table {
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding: 10px 50px;
+}
+.t-body, .t-head {
+    width: 100%;
+}
+.t-head {
+    padding: 10px 0;
+}
+.t-body ::-webkit-scrollbar-thumb {
+    background-color: transparent!important;
+}
+.table .row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+.t-head .th {
+    width: 100%;
+    text-transform: uppercase;
+}
+.table .product {
+    width: 50%;
+}
+.table .price {
+    width: 15%;
+    font-weight: 400;
+}
+.table .qty {
+    width: 20%;
+}
+.table .total {
+    width: 10%;
+}
+.table .image img {
+    width: 80px;
+    height: 120px;
+    border-radius: 10px;
+}
+.table .pro-meta {
+    padding-left: 15px;
+}
+.table .pro-meta .size,
+.table .pro-meta .color {
+    color: rgb(73, 73, 73);
+    margin-right: 10px;
+    font-size: 14px;
+}
+.table .qty button {
+    width: 30px;
+    background-color: transparent;
+    border: 2px solid transparent;
+    font-size: 25px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.table .total-qnt {
+    margin: 0 10px;
+}
+
+@media (max-width: 768px){
+
+}

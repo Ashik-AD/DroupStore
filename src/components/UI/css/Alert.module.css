@@ -1,0 +1,41 @@
+.AlertWrapper {
+    position: fixed;
+    top: 5px;
+    right: 50px;
+    z-index: 9999;
+    -webkit-animation-name: fadeDown;
+            animation-name: fadeDown;
+    -webkit-animation-duration: .4s;
+            animation-duration: .4s;
+    -webkit-animation-direction: forward;
+            animation-direction: forward;
+    transition: all .2s ease-in;
+}
+@-webkit-keyframes fadeDown{
+    from {
+        top: -50px;
+        opacity: 0.5;
+    }
+    to {
+        top: 5px;
+        opacity: 1;
+    }
+}
+@keyframes fadeDown{
+    from {
+        top: -50px;
+        opacity: 0.5;
+    }
+    to {
+        top: 5px;
+        opacity: 1;
+    }
+}
+.Alert {
+    padding: 8px 15px;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 600;
+    box-shadow: 1px 1px 15px 0 rgb(224, 224, 224);
+    transition: all .4s ease;
+}

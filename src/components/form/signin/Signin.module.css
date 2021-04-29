@@ -1,0 +1,61 @@
+.Signin {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-image: url(../../../images/signin.jpg);
+    background-size: cover;
+    background-position: top;
+    z-index: 9999;
+}
+.formWrapper {
+    width: 30%;
+    margin: 50px auto;
+    background-color: #cb46c126;
+    -webkit-backdrop-filter: blur(40px);
+            backdrop-filter: blur(40px);
+    padding: 20px 30px;
+    border-radius: 10px;
+    color: #fff;
+}
+.formWrapper label p {
+    font-weight: 600;
+}
+.Input {
+    width: 90%;
+    background-color: rgb(232, 253, 255);
+    border: 1px solid rgba(230, 230, 230, 0.932);
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(37, 37, 37);
+}
+.btn_signin {
+    display: block;
+    background-color: #FFF;
+    padding: 8px 30px;
+    margin: 0 auto;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    color: #663564;
+    text-transform: uppercase;
+    font-size: 17px;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    border-left: 0;
+    cursor: pointer;
+}
+.btn_signin:hover {
+    box-shadow: 1px 1px 12px 0 #663564;
+}
+.qoute {
+    font-weight: 500;
+    margin: 20px 0 10px 0;
+}
+.greet {
+    font-size: 15px;
+    color: #fffeeead;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 10px 0;
+}

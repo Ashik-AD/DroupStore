@@ -1,0 +1,21 @@
+.product-banner {
+    display: block;
+    height: 250px;
+    width: 100%;
+    line-height: 250px;
+    text-align: center;
+    font-size: 250%;
+    color: #fff;
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 600;
+    border-radius: 10px;
+}
+.meta {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.meta .link {
+    font-weight: 600;
+    color: #ff94d2;
+}

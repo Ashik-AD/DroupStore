@@ -1,0 +1,68 @@
+.cartTotal {
+    background-color: #ffb4b482;
+    width: 100%;
+    height: 100vh;
+    padding: 30px 50px;
+}
+.border {
+    width: 70%;
+    height: 5px;
+    background: #000;
+    margin: 10px auto;
+    border-radius: 20px;
+    display: block;
+}
+.total,
+.tnc,
+.btn_wrapper {
+    margin: 50px 30px;
+}
+.tax_tc {
+    font-size: 13px;
+    font-weight: 600;
+    color: #5e5e5e;
+    margin: 10px 0;
+}
+.tnc {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+}
+.tnc input {
+    margin: 0 5px;
+}
+.btn_wrapper button {
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    margin: 20px 0;
+    border-radius: 18px;
+    border: 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+.check_out {
+    background-color: #000720;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.check_out:hover {
+    box-shadow: 1px 1px 12px 0 rgb(12, 0, 56);
+}
+.btn_wrapper button ion-icon {
+    font-size: 20px;
+    margin: 0 5px;
+}
+.payNow {
+    box-shadow: 1px 1px 12px 0 #ff69b4;
+}
+@media (max-width: 768px){
+    .cartTotal {
+        height: auto;
+    }
+    .cartTotal div:nth-child(1){
+        display: none;
+    }
+}

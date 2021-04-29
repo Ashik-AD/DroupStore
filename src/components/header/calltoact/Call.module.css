@@ -1,0 +1,16 @@
+.Call_to_act {
+    display: block;
+    margin-top: 10%;
+    z-index: 222;
+    color: #fff;
+}
+.xgef {
+    font-size: 300%;
+    font-weight: 500;
+}
+.mxen {
+    font-size: 5rem;
+    font-weight: 400;
+    font-family: 'Monoton', cursive!important;
+    text-shadow: 0 6px 18px #c22ec2;
+}

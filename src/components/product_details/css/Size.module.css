@@ -1,0 +1,13 @@
+.Size {
+    width: 50px;
+    text-align: center;
+    border: 2px solid hotpink;
+    border-radius: 14px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all .3s;
+}
+.Size:hover {
+    transform: scale(1.1);
+    transition: all .3s ease;
+}

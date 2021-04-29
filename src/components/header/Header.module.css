@@ -1,0 +1,25 @@
+.Header {
+    background-image: url(../../images/main.jpg);
+    background-attachment: fixed;
+    position: relative;
+    height: 70vh;
+    width: 100vw;
+    padding-top: 70px;
+    text-align: center;
+}
+.overlap {
+    position: absolute;
+    background-image: linear-gradient(45deg, #f099fbcf, #ec338f6b);
+    height: 70vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 11;
+}
+@media (max-width: 1024px){
+    .overlap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
