@@ -10,7 +10,6 @@ function UserItemProvider(props) {
     const { currentUser} = useContext(UserContext);
     const id = currentUser.id
     useEffect(() => {
-        console.log('hll')
         let subscribeCartStore = null;
         let subscribeFavStore = null;
         subscribeCartStore = async () => {
