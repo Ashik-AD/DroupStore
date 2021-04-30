@@ -1,14 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from './UserProvider';
 import Store from '../db/my-store';
 
-const UserItemContext = React.createContext();
+export const UserItemContext = React.createContext();
+
 function UserItemProvider(props) {
     const [cartItem, setCartItem] = useState([]);
     const [favItem, setFavItem] = useState([]);
-    const { currentUser: { id } } = useContext(UserContext);
-    console.log(id);
-    useContext(() => {
+    const { currentUser} = useContext(UserContext);
+    const id = currentUser.id
+    useEffect(() => {
+        console.log('hll')
         let subscribeCartStore = null;
         let subscribeFavStore = null;
         subscribeCartStore = async () => {
@@ -29,11 +31,13 @@ function UserItemProvider(props) {
             });
             setFavItem(items);
         }
+        subscribeCartStore();
+        subscribeFavStore();
         return () => {
             subscribeCartStore();
             subscribeFavStore();
         }
-    }, []);
+    }, [id]);
     return (
         <UserItemContext.Provider value={{cartItem, favItem,}}>
             {props.children}
