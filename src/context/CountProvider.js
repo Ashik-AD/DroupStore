@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import Storage from '../utils/Storage';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserItemContext } from './UserItemProvider';
 export const CounterContext = React.createContext();
 
 function CountProvider(props) {
     const [productCount, setProductCount] = useState(0);
+    const { cartItem } = useContext(UserItemContext);
 
     useEffect(() => {
-        const getItem = new Storage('cart').getItems();
-        setProductCount(prevCount => prevCount + getItem.length);
-    }, []);
+        setProductCount(prevCount => prevCount + cartItem.length);
+    }, [cartItem]);
 
     const handelCount = () => {
         setProductCount(prevCount => prevCount + 1);
