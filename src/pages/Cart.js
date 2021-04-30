@@ -3,32 +3,20 @@ import CartTotal from '../components/cart/checkout/CartTotal';
 import Row from '../components/cart/table/Row';
 import Table from '../components/cart/table/Table';
 import Space from '../components/header/Space';
+import { UserItemContext } from '../context/UserItemProvider';
 import { UserContext } from '../context/UserProvider';
-import Store from '../db/my-store';
 function Cart() {
     const [cartItem, setCartItem] = useState([]);
     const [total, setTotal] = useState(0);
     const { currentUser } = useContext(UserContext);
+    const userCart = useContext(UserItemContext);
     useEffect(() => {
-        let subsrcibeToStore = null;
-        subsrcibeToStore = async () => {
-            if (currentUser.hasOwnProperty('id')) {
-                const items = [];
-                const { id } = currentUser;
-                const itemRef = new Store(id, 'cart').GetItem();
-                const snapShot = await itemRef;
-                snapShot.forEach(doc => {
-                    items.push(doc.data());
-                });
-                const addAdditonal = addAdditionalData(items);
-                const total = calcTotalPrice(addAdditonal);
-                setCartItem(addAdditonal)
-                setTotal(total)
-            }
-        }
-        subsrcibeToStore()
-        return () => subsrcibeToStore();
-    }, [currentUser]);
+        const withAdditional = addAdditionalData(userCart.cartItem);
+        const totalPrice = calcTotalPrice(withAdditional);
+        setCartItem(withAdditional);
+        setTotal(totalPrice);
+
+    }, [currentUser, userCart.cartItem]);
 
     const addAdditionalData = (items) => {
         const refined = items.map(el => {
