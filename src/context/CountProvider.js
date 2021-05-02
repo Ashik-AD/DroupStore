@@ -7,15 +7,11 @@ function CountProvider(props) {
     const { cartItem } = useContext(UserItemContext);
 
     useEffect(() => {
-        setProductCount(prevCount => prevCount + cartItem.length);
+        const length = cartItem.length;
+        setProductCount(length);
     }, [cartItem]);
-
-    const handelCount = () => {
-        setProductCount(prevCount => prevCount + 1);
-    }
-
     return (
-        <CounterContext.Provider value={{ productCount, handelCount }}>
+        <CounterContext.Provider value={{ productCount }}>
             {props.children}
         </CounterContext.Provider>
     )
