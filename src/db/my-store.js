@@ -7,23 +7,28 @@ class Store {
         this.data = [];
     }
 
-    AddToCart = async (data) => {
+    addToMyStore = async (data) => {
+        // User must be authorized
+        if (!this.isAuthUser) return false;
         //Item must be have ID property
         if (!data.hasOwnProperty('id')) return false;
-
-        if (!this.isAuthUser) return false;
 
         const checkItemInStore = await this.hasItemInShop(data.id);
         if (!checkItemInStore) {
             const addItemToStore = await this.setItem(data);
             return {
                 data: addItemToStore,
-                msg: 'This item is added to your cart',
-                type: 'info'
+                msg: `This item is added to your ${this.collection_name}`,
+                type: 'info',
+                isSomethingWrong: false,
             };
         }
-        console.log('This item is already in your cart');
-        return false;
+        return {
+            data: '',
+            msg: `This item is already in your ${this.collection_name}`,
+            type: 'warn',
+            isSomethingWrong: true
+        };
     }
 
     GetItem = async (id) => {
@@ -48,7 +53,6 @@ class Store {
             return store.exists;
         }
         catch (error) {
-            console.log(`ID:[${id}] doesn't exist`);
             console.log(error);
             return false;
         }
