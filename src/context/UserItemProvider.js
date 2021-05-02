@@ -22,7 +22,7 @@ function UserItemProvider(props) {
             setCartItem(items);
         }
         subscribeFavStore = async () => {
-            const favRef = new Store(id, 'fav').GetItem();
+            const favRef = new Store(id, 'favorite').GetItem();
             const snapShot = await favRef;
             const items = [];
             snapShot.forEach(doc => {
@@ -37,8 +37,16 @@ function UserItemProvider(props) {
             subscribeFavStore();
         }
     }, [id]);
+
+    const updateCorrespondingState = (state_name, item) => {
+        const oldState = state_name === 'cart' ? cartItem : favItem;
+        const updatedItem = [].concat(oldState);
+        updatedItem.push(item);
+        state_name === 'cart' ? setCartItem(updatedItem) : setFavItem(updatedItem);
+    }
+
     return (
-        <UserItemContext.Provider value={{cartItem, favItem,}}>
+        <UserItemContext.Provider value={{cartItem, favItem, updateCorrespondingState}}>
             {props.children}
         </UserItemContext.Provider>
     )
