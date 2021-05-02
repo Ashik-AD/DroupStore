@@ -1,23 +1,23 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { CounterContext } from '../../../context/CountProvider';
 import { SignupContext } from '../../../context/SignupProvider';
 import { UserContext } from '../../../context/UserProvider';
 import Alert from '../../UI/Alert';
 import Store from '../../../db/my-store';
+import { UserItemContext } from '../../../context/UserItemProvider';
 function AddToCart(props) {
     const [isShow, setShow] = useState(false);
     const [info, setInfo] = useState({msg: '', type: ''})
     const { isSignIn } = useContext(SignupContext);
-    const { handelCount } = useContext(CounterContext);
     const { currentUser } = useContext(UserContext);
+    const { updateCorrespondingState } = useContext(UserItemContext);
     const redirect = useHistory();
     
     const handelClick = async () => {
         const { id } = currentUser;
         const { name, price, color, imgArr, size } = props.data;
         if (isSignIn) {
-            const cartInfo = {
+            let cartInfo = {
                 id: props.data.id,
                 name,
                 price,
@@ -25,12 +25,13 @@ function AddToCart(props) {
                 imgArr: imgArr[0],
                 size: size[0]
             }
-            const addToStore = await new Store(id, 'cart', cartInfo.id).AddToCart(cartInfo);
-            const { data, msg, type } = addToStore;
-            console.log(data)
-            // const cartItem = new AddToUserShop();
+            const addToMyCart = await new Store(id, 'cart', cartInfo.id).addToMyStore(cartInfo);
+            const { msg, type, isSomethingWrong } = addToMyCart;
             setInfo({ msg, type });
             setShow(prevState => prevState >= null);
+            if (!isSomethingWrong) {
+                updateCorrespondingState('cart', cartInfo);
+            }
         }
         else {
             redirect.push('/signup');
