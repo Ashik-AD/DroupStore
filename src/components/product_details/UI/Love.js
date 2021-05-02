@@ -1,55 +1,45 @@
-import React from 'react'
-import Storage from '../../../utils/Storage';
+import React, { useContext } from 'react';
+import { UserItemContext } from '../../../context/UserItemProvider';
+import { UserContext } from '../../../context/UserProvider';
+import Store from '../../../db/my-store';
 
 function Love(props) {
+    const { currentUser } = useContext(UserContext);
+    const { favItem } = useContext(UserItemContext);
+    const { updateCorrespondingState } = useContext(UserItemContext);
+
+    const handelClick = async (event) => {
+        event.target.classList.toggle('fav-active');
+        const hasId = currentUser.hasOwnProperty('id');
+        if (hasId && currentUser.id !== '') {
+            const id = currentUser.id;
+            const data = {...props.id };
+            await new Store(id, 'favorite',).addToMyStore(data);
+            updateCorrespondingState('fav', data);
+            const haveFav = isFav();
+            if (haveFav) {
+                event.target.name = 'heart-outline';
+                return;
+            }
+            else {
+                event.target.name = 'heart';
+                return;
+            }
+        }
+    }
+    const isFav = () => {
+        const check = favItem.findIndex(el => el.id === props.id.id);
+        return check === -1 ? false : true;
+    }
     const ds = {
         position: 'relative',
         right: 0,
         margin: 10,
         display: 'inherit'
     }
-    const handelClick = (event) => {
-        const data = {...props.id };
-        const favItem = new Storage('fav').getItems();
-        event.target.classList.toggle('fav-active');
-        const haveFav = isFav();
-        if (haveFav) {
-            let fav = newFav(data.id, favItem);
-            event.target.name = 'heart-outline';
-            addItem(fav);
-            return;
-        }
-        else {
-            event.target.name = 'heart';
-            addItem(data);
-            return;
-        }
-    }
-    const addItem = (data) => {
-        let items = new Storage('fav').getItems();
-        if (data.length) {
-            items = data;
-        }
-        else {
-            items.push(data);
-        }
-        console.log(items)
-        localStorage.setItem('fav', JSON.stringify(items));
-        return;
-    }
-    const isFav = () => {
-        const favItem = new Storage('fav').getItems();
-        const check = favItem.findIndex(el => el.id === props.id.id);
-        return check === -1 ? false : true;
-    }
-    const newFav = (id, items) => {
-        const index = items.findIndex(el => el.id === id);
-        items.splice(index, 1);
-        return items;
-    }
     return (
         <span className='icon' style={!props.pos ? ds : null}>
-            <ion-icon class={isFav() ? 'fav-active' : ''} name={`heart${isFav() ? '': '-outline'}`} onClick={handelClick} />
+            <ion-icon  name={`heart${isFav() ? '': '-outline'}`} onClick={handelClick} />
         </span>
     )
 }
