@@ -30,6 +30,9 @@
 .col-4-span {
     grid-template-columns: 3fr 2fr;
 }
+#signin-btn-res {
+    display: none;
+}
 @media (min-width: 1400px) and (max-width: 1900px){
     nav {
         left: 50%;
@@ -112,6 +115,9 @@
     }
     .logo span {
         font-size: 22px!important;
+    }
+    #signin-btn-res {
+        display: block;
     }
 }
 @media (max-width: 575.98px){
