@@ -25,7 +25,7 @@ function Nav() {
                 <Link to="signup" style={navItemStyle} title="sign up" className={css.des_show}>Sign Up</Link>
                 <Link to="signin" style={navItemStyle} title="sign in" className={css.des_show}>Sign In</Link>
                 <ButtonCart />
-                {isSignIn ? <User /> : <Link to="signin" className={css.Signout_btn} title="Sign in"><ion-icon name="log-in-outline"></ion-icon></Link>}
+                {isSignIn ? <User /> : <Link to="signin" className={css.Signout_btn} id="signin-btn-res" title="Sign in"><ion-icon name="log-in-outline"></ion-icon></Link>}
             </div>
         </nav>
     )
