@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Logo = props => {
     const logoStyle = {
         height: 50,
