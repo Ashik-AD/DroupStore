@@ -143,3 +143,80 @@ label span {
     top: -20px;
     transition: all .3s ease;
 }
+@media (max-width: 1280px){
+    .background {
+        max-height: 600px;
+    }
+    .wrapper {
+        max-height: 700px;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1280px){
+    .wrapper {
+        padding: 50px 80px;
+    }
+    .formWrapper {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+@media (max-width: 1024px){
+    .wrapper {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .formWrapper {
+        width: 100%;
+        padding: 20px 10px;
+        left: 0;
+    }
+    .wrapper form {
+        padding: 20px 25px;
+    }
+    .Input {
+        width: 100%
+    }
+}
+@media (min-width: 768px) and (max-width: 1280px){
+    .background {
+        left: 0;
+    }
+    .formWrapper {
+        left: -40px;
+        z-index: 1111;
+    }
+    .background {
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .wrapper {
+        align-items: center;
+        justify-content: center;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    .background {
+        display: none;
+    }
+}
+
+@media (min-width: 575px) and (max-width: 768px){
+    .wrapper {
+        padding-left: 120px;
+        padding-right: 120px;
+    }
+}
+@media (max-width: 525px){
+    .wrapper {
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+}
+@media (max-width: 425.98px){
+    .wrapper {
+        padding-left: 20px;
+        padding-right:20px;
+    }
+}
