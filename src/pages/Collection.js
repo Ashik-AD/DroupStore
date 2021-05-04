@@ -16,7 +16,6 @@ class Collection extends Component {
         const req = await axios.get(`https://cdn.contentful.com/spaces/mcnnkxbgt6j9/environments/master/entries?access_token=i9OcygGKAEo767VqSRTAMWuipiTiDXBG_MLaljvSydE&content_type=collection${name}`);
         const data = await req.data;
         const processData = data.items.map(el => new ProcessData().PROC_DATA(el.sys.id, el.fields, data.includes.Asset))
-        console.log(processData)
         this.setState({items: processData})
     }
     render() {

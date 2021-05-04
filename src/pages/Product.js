@@ -13,7 +13,6 @@ export default class Product extends Component {
         const req = await axios.get(`https://cdn.contentful.com/spaces/mcnnkxbgt6j9/environments/master/entries?access_token=i9OcygGKAEo767VqSRTAMWuipiTiDXBG_MLaljvSydE&query=${id}`);
         const data = await req.data;
         const processData = new ProcessData().PROC_DATA_RAW(data);
-        console.log(processData)
         this.setState({ productDetail: processData, isLoading: false });
     }
     render() {

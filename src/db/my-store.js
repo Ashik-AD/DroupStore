@@ -35,9 +35,7 @@ class Store {
         try {
             const storeRef = fireStore.collection('user_shop').doc(`${this.user_ID}`).collection(`${this.collection_name}`);
             const snapShot = await storeRef.get();
-            // const query = this.queryString(this.user_ID, this.collection_name, id);
-            // const storeRef2 = fireStore.doc(query);
-            // console.log(storeRef2)
+
             return snapShot;
         
         }

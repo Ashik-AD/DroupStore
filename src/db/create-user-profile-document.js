@@ -7,11 +7,10 @@ const createUserProfileDocument = async (uid, addtional) => {
         try {
             const createdAt = new Date();
             await fireStore.collection('users').doc(uid).set({ createdAt, ...addtional });
-            console.log("Document successfully created");
             return await snapShot.data();
         }
         catch (error) {
-            console.log("Cant create user profile to the database");
+            console.log(error);
             return;
         }
     }
