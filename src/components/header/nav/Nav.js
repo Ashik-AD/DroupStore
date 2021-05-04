@@ -6,23 +6,6 @@ import Logo from '../logo/Logo';
 import css from './Nav.module.css';
 import ButtonCart from './navUI/ButtonCart';
 function Nav() {
-    const nav = [
-        {
-            id: 1,
-            label: 'Shop',
-            path: 'shop'
-        },
-        {
-            id: 2,
-            label: 'How it works',
-            path: 'how-it-works'
-        },
-        {
-            id: 3,
-            label: 'Retailers',
-            path: 'retailers'
-        },
-    ]
     const flex = {
         display: 'flex',
         alignItems: 'center'
@@ -42,7 +25,7 @@ function Nav() {
                 <Link to="signup" style={navItemStyle} title="sign up" className={css.des_show}>Sign Up</Link>
                 <Link to="signin" style={navItemStyle} title="sign in" className={css.des_show}>Sign In</Link>
                 <ButtonCart />
-                {isSignIn ? <User /> : null}
+                {isSignIn ? <User /> : <Link to="signin" className={css.Signout_btn} title="Sign in"><ion-icon name="log-in-outline"></ion-icon></Link>}
             </div>
         </nav>
     )
