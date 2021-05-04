@@ -8,22 +8,12 @@ function ProductItem(props) {
     const { name, price, imgArr, color } = props;
     const [curImage, setCurImage] = useState(typeof imgArr[0] !== 'string' && typeof imgArr[0] !== 'object' ? imgArr[color[0]] : imgArr); // return false if Item is array
     const history = useHistory();
-    const imgList = {
-        display: 'flex',
-        flexWrap: 'nowrap',
-        width: '100%',
-        height: '350px',
-        overflow: 'hidden'
-    }
+
     const width = useRef();
     const imgRef1 = useRef();
     const imgRef2 = useRef();
     const refs = [imgRef1, imgRef2];
-    const img = {
-        height: 'auto',
-        width: '100%',
-        transition: 'all .4s ease-in-out'
-    }
+
     const handelClick = () => {
         history.push(`/product/${name}`)
     }
@@ -55,12 +45,24 @@ function ProductItem(props) {
             imgRef2.current.className = '';
         }
     }
+    const imgList = {
+        display: 'flex',
+        flexWrap: 'nowrap',
+        width: '100%',
+        height: '350px',
+        overflow: 'hidden'
+    }
+    const img = {
+        height: 'auto',
+        width: '100%',
+        transition: 'all .4s ease-in-out'
+    }
 
     return (
         <div style={{margin: '20px 15px'}}  className="product-item" onMouseOver={handelMouseMove} onMouseLeave={handelMouseLeave}>
             <div className="img_bg" style={imgList} ref={width} onClick={handelClick}>
                 {
-                    curImage.map((el, index) => <img key={uuidv4()} src={el.url} alt={name} style={img} ref={refs[index]} />)
+                    curImage.slice(0, 2).map((el, index) => <img key={uuidv4()} src={el.url} alt={name} style={img} ref={refs[index]} />)
                 }
 
             </div>
