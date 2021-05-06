@@ -65,4 +65,7 @@
     .cartTotal div:nth-child(1){
         display: none;
     }
+    .cartTotal {
+        padding: 20px 10px;
+    }
 }

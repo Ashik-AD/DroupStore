@@ -67,4 +67,22 @@
     .table {
         padding: 10px;
     }
+    .color {
+        display: block;
+    }
+    .total-qnt {
+        display: block;
+    }
+    .price {
+        width: 20%;
+    }
+    .table .qty {
+        width: 10%;
+    }
+    .table .product {
+        width: 60%;
+    }
+    .spacer {
+        height: 50px!important;
+    }
 }
