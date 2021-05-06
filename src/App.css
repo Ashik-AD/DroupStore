@@ -33,6 +33,30 @@
 #signin-btn-res {
     display: none;
 }
+.btn-clear-cart {
+    position: absolute;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    bottom: 20px;
+    left: 40%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #ff8c00;
+    background-color: #ff8c00;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:  background .4s;
+}
+.btn-clear-cart ion-icon {
+    margin-right: 10px;
+}
+.btn-clear-cart:hover {
+    box-shadow: 0px 0px 11px 3px #ff8c00;
+    transition: all .3s;
+}
 @media (min-width: 1400px) and (max-width: 1900px){
     nav {
         left: 50%;

@@ -44,9 +44,11 @@ function UserItemProvider(props) {
         updatedItem.push(item);
         state_name === 'cart' ? setCartItem(updatedItem) : setFavItem(updatedItem);
     }
-
+    const clearCorrespondingState = (state_name) => {
+        return state_name === 'cart' ? setCartItem([]) : state_name === 'fav' ? setFavItem([]) : false;
+    }
     return (
-        <UserItemContext.Provider value={{cartItem, favItem, updateCorrespondingState}}>
+        <UserItemContext.Provider value={{cartItem, favItem, updateCorrespondingState, clearCorrespondingState}}>
             {props.children}
         </UserItemContext.Provider>
     )
