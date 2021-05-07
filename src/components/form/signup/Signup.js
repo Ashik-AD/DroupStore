@@ -222,6 +222,6 @@ function checkPassword(passX, passY) {
     return msg
 }
 function checkEmail(email) {
-    return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.exec(email) ? true : false
+    return /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g.exec(email) ? true : false
 }
 export default Signup;
