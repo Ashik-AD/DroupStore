@@ -31,13 +31,11 @@ class Store {
         };
     }
 
-    GetItem = async (id) => {
+    GetItem = async () => {
         try {
             const storeRef = fireStore.collection('user_shop').doc(`${this.user_ID}`).collection(`${this.collection_name}`);
             const snapShot = await storeRef.get();
-
             return snapShot;
-        
         }
         catch (error) {
             console.log("Error: DB error");
@@ -66,9 +64,6 @@ class Store {
             console.log(error.code);
             return;
         }
-        finally {
-            console.log('Database op complete');
-        }
     }
 
     // Whether user Authorized or Not
@@ -77,11 +72,11 @@ class Store {
         return store.exists;
     }
 
-    queryString = (uid, colName, docId = '') => {
-        return docId !== '' ? `user_shop/${uid}/${colName}/${docId}`
-            :
-            `user_shop/${uid}/${colName}`
-    }
+    // queryString = (uid, colName, docId = '') => {
+    //     return docId !== '' ? `user_shop/${uid}/${colName}/${docId}`
+    //         :
+    //         `user_shop/${uid}/${colName}`
+    // }
 }
 
 export default Store;
