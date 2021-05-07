@@ -33,7 +33,7 @@
 #signin-btn-res {
     display: none;
 }
-.btn-clear-cart {
+.btn-clear {
     position: absolute;
     display: flex;
     justify-items: center;
@@ -50,12 +50,16 @@
     cursor: pointer;
     transition:  background .4s;
 }
-.btn-clear-cart ion-icon {
+.btn-clear ion-icon {
     margin-right: 10px;
 }
-.btn-clear-cart:hover {
+.btn-clear:hover {
     box-shadow: 0px 0px 11px 3px #ff8c00;
     transition: all .3s;
+}
+.favorite button {
+    left: 0;
+    right: 20px!important;
 }
 @media (min-width: 1400px) and (max-width: 1900px){
     nav {
