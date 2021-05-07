@@ -3,9 +3,11 @@ import CartTotal from '../components/cart/checkout/CartTotal';
 import Row from '../components/cart/table/Row';
 import Table from '../components/cart/table/Table';
 import Space from '../components/header/Space';
-import StoreDelete from '../db/delete-store';
 import { UserItemContext } from '../context/UserItemProvider';
 import { UserContext } from '../context/UserProvider';
+import ButtonRemove from '../components/UI/Remove'
+
+
 function Cart() {
     const [cartItem, setCartItem] = useState([]);
     const [total, setTotal] = useState(0);
@@ -59,20 +61,7 @@ function Cart() {
     }
     const calcTotalPrice = (item) => item.reduce((prev, cur) => prev + cur.total, 0);
 
-    const handleClearCart = async () => {
-        const items = cartItem.map(el => el.id);
-        const uid = currentUser.id;
-        const cartRef = new StoreDelete(uid, 'cart');
-        try {
-            await cartRef.deleteCollection(items);
-            setCartItem([]);
-            userCart.clearCorrespondingState('cart');
-        }
-        catch (error) {
-            console.error(error)
-        }
-        
-    }
+    const handleClearCart = async () => setCartItem([])
     return (
         <section className="cart-wrapper" style={{ height: '100vh', overflowY: 'hidden'}}>
             <div className="col-4-span grid">
@@ -83,10 +72,10 @@ function Cart() {
                             cartItem.map(el => <Row key={el.name} {...el} handelCountProduct={handelProductCount} />)
                         }
                     </Table>
-                    <button className="btn-clear-cart" onClick={handleClearCart}>
+                    <ButtonRemove label="cart" handleClearPrevState={handleClearCart}>
                         <ion-icon name="trash-bin" />
                         <span>Clear Cart</span>
-                    </button>
+                    </ButtonRemove>
                 </div>
                 <CartTotal total={total} />
             </div>
