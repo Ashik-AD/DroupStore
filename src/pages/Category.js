@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import PROC_DATA from '../utils/Process'
+import ProcessData from '../utils/Process'
 import ProductHeader from '../components/productsUI/ProductHeader';
 import ProductLIst from '../components/productsUI/ProductLIst';
 import ProductItem from '../components/productsUI/ProductItem';
@@ -27,7 +27,8 @@ class Category extends Component {
 
         const req2 = await axios.get(`https://cdn.contentful.com/spaces/mcnnkxbgt6j9/environments/master/entries?access_token=i9OcygGKAEo767VqSRTAMWuipiTiDXBG_MLaljvSydE&metadata.tags.sys.id[all]=${this.props.match.params.id.toLowerCase()}`);
         const data2 = await req2.data;
-        const processedData = data2.items.map(el => PROC_DATA(el.sys.id, el.fields, data2.includes.Asset));
+        const processCategory = new ProcessData()
+        const processedData = data2.items.map(el => processCategory.PROC_DATA(el.sys.id, el.fields, data2.includes.Asset));
         this.setState({ banner: this.props.location.state ? this.props.location.state : banner_url, bannerid: id, products: processedData })
     }
 
