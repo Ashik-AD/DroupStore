@@ -7,7 +7,6 @@ import { UserItemContext } from '../context/UserItemProvider';
 import { UserContext } from '../context/UserProvider';
 import ButtonRemove from '../components/UI/Remove'
 
-
 function Cart() {
     const [cartItem, setCartItem] = useState([]);
     const [total, setTotal] = useState(0);
