@@ -46,14 +46,11 @@ function UserItemProvider(props) {
         state_name === 'cart' ? setCartItem(updatedItem) : setFavItem(updatedItem);
     }
     const clearCorrespondingState = (state_name) => {
-        return state_name === 'cart' 
-        ? 
+        return state_name === 'cart' ? 
         setCartItem([]) 
         : 
-        state_name === 'fav' 
-        ? 
-        setFavItem([]) 
-        : 
+        state_name === 'fav' ? 
+        setFavItem([]) : 
         false;
     }
     return (

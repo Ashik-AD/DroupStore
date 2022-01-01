@@ -32,15 +32,8 @@ class Store {
     }
 
     GetItem = async () => {
-        try {
             const storeRef = fireStore.collection('user_shop').doc(`${this.user_ID}`).collection(`${this.collection_name}`);
-            const snapShot = await storeRef.get();
-            return snapShot;
-        }
-        catch (error) {
-            console.log("Error: DB error");
-            return;
-        }
+            return await storeRef.get();
     }
     
     hasItemInShop = async (id) => {
