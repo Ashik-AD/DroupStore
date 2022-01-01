@@ -10,11 +10,12 @@ function UserItemProvider(props) {
     const { currentUser} = useContext(UserContext);
     const id = currentUser.id
     useEffect(() => {
+        if(!currentUser.hasOwnProperty('id')) return;
         let subscribeCartStore = null;
         let subscribeFavStore = null;
         subscribeCartStore = async () => {
-            const cartRef = new Store(id, 'cart').GetItem();
-            const snapShot = await cartRef;
+            const cartRef = await new Store(id, 'cart').GetItem();
+            const snapShot = cartRef;
             const items = [];
             snapShot.forEach(doc => {
                 items.push(doc.data());
@@ -36,7 +37,7 @@ function UserItemProvider(props) {
             subscribeCartStore();
             subscribeFavStore();
         }
-    }, [id]);
+    }, [currentUser, id]);
 
     const updateCorrespondingState = (state_name, item) => {
         const oldState = state_name === 'cart' ? cartItem : favItem;
@@ -45,7 +46,15 @@ function UserItemProvider(props) {
         state_name === 'cart' ? setCartItem(updatedItem) : setFavItem(updatedItem);
     }
     const clearCorrespondingState = (state_name) => {
-        return state_name === 'cart' ? setCartItem([]) : state_name === 'fav' ? setFavItem([]) : false;
+        return state_name === 'cart' 
+        ? 
+        setCartItem([]) 
+        : 
+        state_name === 'fav' 
+        ? 
+        setFavItem([]) 
+        : 
+        false;
     }
     return (
         <UserItemContext.Provider value={{cartItem, favItem, updateCorrespondingState, clearCorrespondingState}}>
